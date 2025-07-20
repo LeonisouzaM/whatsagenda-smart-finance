@@ -14,7 +14,236 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      ai_suggestions: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          metadata: Json | null
+          priority: string | null
+          status: string | null
+          title: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          id?: string
+          metadata?: Json | null
+          priority?: string | null
+          status?: string | null
+          title: string
+          type: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          metadata?: Json | null
+          priority?: string | null
+          status?: string | null
+          title?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      categories: {
+        Row: {
+          color: string
+          created_at: string
+          icon: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          color?: string
+          created_at?: string
+          icon?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          color?: string
+          created_at?: string
+          icon?: string | null
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      expenses: {
+        Row: {
+          ai_categorized: boolean | null
+          amount: number
+          category_id: string | null
+          created_at: string
+          description: string
+          file_url: string | null
+          id: string
+          payment_method: string | null
+          transaction_date: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          ai_categorized?: boolean | null
+          amount: number
+          category_id?: string | null
+          created_at?: string
+          description: string
+          file_url?: string | null
+          id?: string
+          payment_method?: string | null
+          transaction_date: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          ai_categorized?: boolean | null
+          amount?: number
+          category_id?: string | null
+          created_at?: string
+          description?: string
+          file_url?: string | null
+          id?: string
+          payment_method?: string | null
+          transaction_date?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "expenses_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          notification_preferences: Json | null
+          phone: string | null
+          subscription_plan: string | null
+          subscription_status: string | null
+          updated_at: string
+          user_id: string
+          whatsapp_connected: boolean | null
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          notification_preferences?: Json | null
+          phone?: string | null
+          subscription_plan?: string | null
+          subscription_status?: string | null
+          updated_at?: string
+          user_id: string
+          whatsapp_connected?: boolean | null
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          notification_preferences?: Json | null
+          phone?: string | null
+          subscription_plan?: string | null
+          subscription_status?: string | null
+          updated_at?: string
+          user_id?: string
+          whatsapp_connected?: boolean | null
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          ai_generated: boolean | null
+          category: string | null
+          created_at: string
+          description: string | null
+          end_date: string | null
+          id: string
+          priority: string | null
+          start_date: string
+          status: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          ai_generated?: boolean | null
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          priority?: string | null
+          start_date: string
+          status?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          ai_generated?: boolean | null
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          priority?: string | null
+          start_date?: string
+          status?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      whatsapp_logs: {
+        Row: {
+          content: string
+          created_at: string
+          file_type: string | null
+          file_url: string | null
+          has_file: boolean | null
+          id: string
+          message_type: string
+          processed: boolean | null
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          file_type?: string | null
+          file_url?: string | null
+          has_file?: boolean | null
+          id?: string
+          message_type: string
+          processed?: boolean | null
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          file_type?: string | null
+          file_url?: string | null
+          has_file?: boolean | null
+          id?: string
+          message_type?: string
+          processed?: boolean | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
