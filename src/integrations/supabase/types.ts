@@ -129,6 +129,7 @@ export type Database = {
           created_at: string
           full_name: string | null
           id: string
+          is_admin: boolean | null
           notification_preferences: Json | null
           phone: string | null
           subscription_plan: string | null
@@ -141,6 +142,7 @@ export type Database = {
           created_at?: string
           full_name?: string | null
           id?: string
+          is_admin?: boolean | null
           notification_preferences?: Json | null
           phone?: string | null
           subscription_plan?: string | null
@@ -153,6 +155,7 @@ export type Database = {
           created_at?: string
           full_name?: string | null
           id?: string
+          is_admin?: boolean | null
           notification_preferences?: Json | null
           phone?: string | null
           subscription_plan?: string | null
@@ -160,6 +163,33 @@ export type Database = {
           updated_at?: string
           user_id?: string
           whatsapp_connected?: boolean | null
+        }
+        Relationships: []
+      }
+      settings: {
+        Row: {
+          category: string | null
+          created_at: string
+          id: string
+          name: string
+          updated_at: string
+          value: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          id?: string
+          name: string
+          updated_at?: string
+          value?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+          updated_at?: string
+          value?: string | null
         }
         Relationships: []
       }

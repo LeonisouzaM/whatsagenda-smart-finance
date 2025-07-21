@@ -2,6 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { useAdmin } from "@/hooks/useAdmin";
 import {
   LayoutDashboard,
   Calendar,
@@ -13,7 +14,8 @@ import {
   HelpCircle,
   LogOut,
   Menu,
-  X
+  X,
+  Settings
 } from "lucide-react";
 import { useState } from "react";
 
@@ -31,6 +33,7 @@ const menuItems = [
 export function Sidebar() {
   const location = useLocation();
   const { signOut } = useAuth();
+  const { isAdmin } = useAdmin();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSignOut = () => {
@@ -85,6 +88,22 @@ export function Sidebar() {
                 </NavLink>
               );
             })}
+            
+            {isAdmin && (
+              <NavLink
+                to="/admin"
+                className={cn(
+                  "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                  location.pathname.startsWith('/admin')
+                    ? "bg-primary text-primary-foreground"
+                    : "hover:bg-accent hover:text-accent-foreground"
+                )}
+                onClick={() => setIsOpen(false)}
+              >
+                <Settings className="h-4 w-4" />
+                Administração
+              </NavLink>
+            )}
           </nav>
 
           {/* Sign out button */}
