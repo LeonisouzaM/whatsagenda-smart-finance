@@ -56,7 +56,7 @@ export function Dashboard() {
       .eq('user_id', user?.id)
       .gte('transaction_date', startOfMonth);
 
-    const monthlyTotal = expenses?.reduce((sum, expense) => sum + parseFloat(expense.amount), 0) || 0;
+    const monthlyTotal = expenses?.reduce((sum, expense) => sum + parseFloat(expense.amount.toString()), 0) || 0;
 
     // AI suggestions
     const { count: suggestionsCount } = await supabase
