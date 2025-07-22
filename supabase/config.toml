@@ -1,1 +1,21 @@
 project_id = "jxytcxhokkcejpawydar"
+
+[functions]
+
+[functions.whatsapp-webhook]
+verify_jwt = false
+
+[functions.test-whatsapp-connection]
+verify_jwt = true
+
+[functions.test-gemini-connection]
+verify_jwt = true
+
+[functions.send-whatsapp-message]
+verify_jwt = true
+
+[functions.process-expense-with-ai]
+verify_jwt = true
+
+[functions.generate-ai-suggestions]
+verify_jwt = true

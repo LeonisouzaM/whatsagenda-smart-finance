@@ -129,24 +129,45 @@ export function AdminSettings() {
     const key = `testing_${type}`;
     setTestingConnections(prev => ({ ...prev, [key]: true }));
     
-    // Simulate API testing - in real implementation, you would make actual API calls
-    setTimeout(() => {
-      const hasApiKey = type === 'whatsapp' 
-        ? settings.whatsapp_api_key && settings.whatsapp_number_id
-        : settings.gemini_api_key;
+    try {
+      let endpoint = '';
+      switch (type) {
+        case 'whatsapp':
+          endpoint = 'test-whatsapp-connection';
+          break;
+        case 'gemini':
+          endpoint = 'test-gemini-connection';
+          break;
+        default:
+          throw new Error('Tipo de conexão não suportado');
+      }
+
+      const { data, error } = await supabase.functions.invoke(endpoint);
       
-      const status = hasApiKey ? 'success' : 'error';
+      if (error) throw error;
+      
+      const status = data.success ? 'success' : 'error';
       setConnectionStatus(prev => ({ ...prev, [type]: status }));
-      setTestingConnections(prev => ({ ...prev, [key]: false }));
       
       toast({
-        title: hasApiKey ? "Conexão bem-sucedida" : "Falha na conexão",
-        description: hasApiKey 
+        title: data.success ? "Conexão bem-sucedida" : "Falha na conexão",
+        description: data.success 
           ? `A conexão com ${type === 'whatsapp' ? 'WhatsApp' : 'Gemini'} foi testada com sucesso.`
-          : `Por favor, configure as credenciais do ${type === 'whatsapp' ? 'WhatsApp' : 'Gemini'} primeiro.`,
-        variant: hasApiKey ? "default" : "destructive",
+          : `Erro na conexão: ${data.error || 'Verifique as credenciais'}`,
+        variant: data.success ? "default" : "destructive",
       });
-    }, 2000);
+    } catch (error) {
+      console.error(`Erro ao testar ${type}:`, error);
+      setConnectionStatus(prev => ({ ...prev, [type]: 'error' }));
+      
+      toast({
+        title: "Erro ao testar conexão",
+        description: `Falha ao conectar com ${type === 'whatsapp' ? 'WhatsApp' : 'Gemini'}. Verifique as configurações.`,
+        variant: "destructive",
+      });
+    } finally {
+      setTestingConnections(prev => ({ ...prev, [key]: false }));
+    }
   };
 
   return (
@@ -270,14 +291,16 @@ export function AdminSettings() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="facebook_pixel">Código do Pixel do Facebook</Label>
-                <Textarea
+                <Label htmlFor="facebook_pixel">ID do Pixel do Facebook</Label>
+                <Input
                   id="facebook_pixel"
-                  placeholder="<!-- Insira aqui o código completo do pixel do Facebook -->"
+                  placeholder="Ex: 123456789012345"
                   value={settings.facebook_pixel}
                   onChange={(e) => setSettings(prev => ({ ...prev, facebook_pixel: e.target.value }))}
-                  rows={8}
                 />
+                <p className="text-sm text-muted-foreground">
+                  Apenas o ID numérico do pixel, não o código completo
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -291,14 +314,16 @@ export function AdminSettings() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="google_analytics">Código do Google Analytics/GTM</Label>
-                <Textarea
+                <Label htmlFor="google_analytics">ID do Google Analytics</Label>
+                <Input
                   id="google_analytics"
-                  placeholder="<!-- Insira aqui o código do Google Analytics ou GTM -->"
+                  placeholder="Ex: G-XXXXXXXXXX ou UA-XXXXXXXX-X"
                   value={settings.google_analytics}
                   onChange={(e) => setSettings(prev => ({ ...prev, google_analytics: e.target.value }))}
-                  rows={8}
                 />
+                <p className="text-sm text-muted-foreground">
+                  ID do Google Analytics 4 (G-XXXXXXXXXX) ou Universal Analytics (UA-XXXXXXXX-X)
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -312,14 +337,16 @@ export function AdminSettings() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="tiktok_pixel">Código do Pixel do TikTok</Label>
-                <Textarea
+                <Label htmlFor="tiktok_pixel">ID do Pixel do TikTok</Label>
+                <Input
                   id="tiktok_pixel"
-                  placeholder="<!-- Insira aqui o código completo do pixel do TikTok -->"
+                  placeholder="Ex: C4A8CB37XXXXXXXXXXXXXXXXXXXXX"
                   value={settings.tiktok_pixel}
                   onChange={(e) => setSettings(prev => ({ ...prev, tiktok_pixel: e.target.value }))}
-                  rows={8}
                 />
+                <p className="text-sm text-muted-foreground">
+                  Apenas o ID do pixel do TikTok, não o código completo
+                </p>
               </div>
             </CardContent>
           </Card>
