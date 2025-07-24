@@ -21,6 +21,8 @@ import { AdminSettings } from "@/pages/admin/AdminSettings";
 import { AdminUsers } from "@/pages/admin/AdminUsers";
 import { AdminLogs } from "@/pages/admin/AdminLogs";
 import Index from "./pages/Index";
+import { Blog } from "./pages/Blog";
+import { BlogPost } from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +37,8 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/dashboard" element={<DashboardLayout><Dashboard /></DashboardLayout>} />
             <Route path="/agenda" element={<DashboardLayout><Agenda /></DashboardLayout>} />

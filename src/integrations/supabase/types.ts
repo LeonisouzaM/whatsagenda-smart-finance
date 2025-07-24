@@ -50,6 +50,45 @@ export type Database = {
         }
         Relationships: []
       }
+      blog_posts: {
+        Row: {
+          author_id: string | null
+          category: string
+          content: string
+          cover_image: string | null
+          created_at: string
+          id: string
+          slug: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_id?: string | null
+          category?: string
+          content: string
+          cover_image?: string | null
+          created_at?: string
+          id?: string
+          slug: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string | null
+          category?: string
+          content?: string
+          cover_image?: string | null
+          created_at?: string
+          id?: string
+          slug?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       categories: {
         Row: {
           color: string
@@ -123,6 +162,45 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      plans: {
+        Row: {
+          benefits: string[]
+          button_label: string
+          created_at: string
+          display_order: number | null
+          id: string
+          is_featured: boolean | null
+          name: string
+          price_monthly: number | null
+          price_yearly: number | null
+          updated_at: string
+        }
+        Insert: {
+          benefits?: string[]
+          button_label?: string
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          is_featured?: boolean | null
+          name: string
+          price_monthly?: number | null
+          price_yearly?: number | null
+          updated_at?: string
+        }
+        Update: {
+          benefits?: string[]
+          button_label?: string
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          is_featured?: boolean | null
+          name?: string
+          price_monthly?: number | null
+          price_yearly?: number | null
+          updated_at?: string
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
@@ -235,6 +313,45 @@ export type Database = {
           title?: string
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          avatar_url: string | null
+          content: string
+          created_at: string
+          display_order: number | null
+          id: string
+          is_active: boolean | null
+          name: string
+          occupation: string
+          rating: number | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          content: string
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+          occupation: string
+          rating?: number | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          content?: string
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          occupation?: string
+          rating?: number | null
+          updated_at?: string
         }
         Relationships: []
       }
