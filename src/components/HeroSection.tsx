@@ -1,67 +1,98 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Clock, DollarSign, CheckSquare } from "lucide-react";
-import heroImage from "@/assets/hero-agendify.png";
+import { MessageCircle, ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-hero min-h-screen flex items-center">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section className="relative min-h-screen bg-gradient-hero flex items-center justify-center px-4 py-20">
+      <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-8 text-center lg:text-left">
-            <div className="space-y-4">
+          {/* Left Column - Text Content */}
+          <div className="space-y-8">
+            <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                <span className="text-primary">Agendify:</span> Organize sua rotina e finanças com IA, tudo pelo WhatsApp.
+                Transforme seu{" "}
+                <span className="text-primary">WhatsApp</span> em um{" "}
+                <span className="text-primary">assistente virtual</span> com IA
               </h1>
+              
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                Envie seus compromissos, metas e extratos bancários. A IA monta sua agenda ideal, analisa seus gastos e sugere hábitos saudáveis.
+                Automatize tarefas, ganhe produtividade e atenda seus clientes 24h por dia com inteligência artificial.
               </p>
             </div>
 
-            {/* CTA Button */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                variant="hero" 
                 size="lg" 
-                className="text-lg px-8 py-6"
-                onClick={() => window.open('https://wa.me/5599999999999', '_blank')}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg"
+                onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
               >
-                <MessageCircle className="mr-2" />
-                Comece pelo WhatsApp
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Entrar
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-                Ver demonstração
+              
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="px-8 py-6 text-lg border-2"
+              >
+                Ver Demonstração
               </Button>
             </div>
 
-            {/* Mini benefits */}
-            <div className="flex flex-wrap gap-6 justify-center lg:justify-start text-sm text-muted-foreground">
+            <div className="flex flex-col sm:flex-row gap-6 pt-4">
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-primary" />
-                <span>Agenda otimizada</span>
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span className="text-sm text-muted-foreground">Planos a partir de R$ 14,90/mês</span>
               </div>
               <div className="flex items-center gap-2">
-                <DollarSign className="h-4 w-4 text-primary" />
-                <span>Controle financeiro</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckSquare className="h-4 w-4 text-primary" />
-                <span>Hábitos saudáveis</span>
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span className="text-sm text-muted-foreground">Cancele quando quiser</span>
               </div>
             </div>
           </div>
 
-          {/* Image */}
-          <div className="relative lg:order-last order-first">
-            <div className="relative z-10">
-              <img 
-                src={heroImage} 
-                alt="Agendify - Organize sua rotina e finanças com IA via WhatsApp" 
-                className="w-full h-auto max-w-lg mx-auto rounded-2xl shadow-large"
-              />
+          {/* Right Column - WhatsApp Chat Mockup */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="w-full max-w-sm">
+              <div className="bg-white rounded-3xl shadow-large p-4">
+                {/* Chat Header */}
+                <div className="flex items-center gap-3 p-4 border-b border-border">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Agentify Bot</h3>
+                    <p className="text-xs text-green-500">online</p>
+                  </div>
+                </div>
+
+                {/* Chat Messages */}
+                <div className="space-y-4 p-4">
+                  <div className="bg-secondary rounded-2xl rounded-tl-md p-3 max-w-[80%]">
+                    <p className="text-sm text-foreground">
+                      Olá! Gostaria de agendar um horário para segunda-feira?
+                    </p>
+                  </div>
+
+                  <div className="bg-primary text-primary-foreground rounded-2xl rounded-tr-md p-3 max-w-[80%] ml-auto">
+                    <p className="text-sm">
+                      Sim, que horários tem disponível?
+                    </p>
+                  </div>
+
+                  <div className="bg-secondary rounded-2xl rounded-tl-md p-3 max-w-[80%]">
+                    <p className="text-sm text-foreground mb-2">Tenho disponível:</p>
+                    <div className="space-y-1 text-sm text-foreground">
+                      <p>• 09:00 - 10:00</p>
+                      <p>• 14:00 - 15:00</p>
+                      <p>• 16:30 - 17:30</p>
+                    </div>
+                    <p className="text-sm text-foreground mt-2">Qual prefere?</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            {/* Background decoration */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-primary opacity-10 rounded-full blur-3xl -z-10"></div>
           </div>
         </div>
       </div>

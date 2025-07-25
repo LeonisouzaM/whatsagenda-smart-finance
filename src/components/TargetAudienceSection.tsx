@@ -1,72 +1,95 @@
-import { GraduationCap, Briefcase, Brain } from "lucide-react";
+import { Building2, Wrench, Megaphone, User } from "lucide-react";
 
 const audiences = [
   {
-    icon: GraduationCap,
-    title: "Estudantes",
-    subtitle: "Agenda de estudos + controle de gastos",
-    description: "Organize seu cronograma de estudos com pausas estratégicas e mantenha controle total sobre seus gastos mensais.",
-    benefits: ["Cronograma de estudos otimizado", "Controle de mesada/bolsa", "Alertas de gastos excessivos"]
+    icon: Building2,
+    title: "Pequenas Empresas",
+    subtitle: "Escale seu atendimento",
+    description: "Otimize o atendimento ao cliente e aumente as vendas sem contratar mais funcionários.",
+    benefits: [
+      "Atendimento 24/7 automatizado",
+      "Redução de custos operacionais",
+      "Aumento na satisfação do cliente"
+    ]
   },
   {
-    icon: Briefcase,
-    title: "Freelancers",
-    subtitle: "Organização do tempo + foco nos prazos",
-    description: "Gerencie múltiplos projetos simultaneamente e mantenha suas finanças organizadas para um negócio sustentável.",
-    benefits: ["Gestão de múltiplos projetos", "Controle de recebimentos", "Otimização de produtividade"]
+    icon: Wrench,
+    title: "Prestadores de Serviço",
+    subtitle: "Automatize processos",
+    description: "Automatize agendamentos, confirmações e follow-ups de serviços.",
+    benefits: [
+      "Agendamentos automáticos",
+      "Confirmações inteligentes",
+      "Follow-ups personalizados"
+    ]
   },
   {
-    icon: Brain,
-    title: "Pessoas com TDAH",
-    subtitle: "Rotina adaptada e divisão em blocos curtos",
-    description: "Rotinas especialmente projetadas com blocos de tempo menores e lembretes frequentes para manter o foco.",
-    benefits: ["Blocos de tempo adaptativos", "Lembretes personalizados", "Estrutura clara e simples"]
+    icon: Megaphone,
+    title: "Agências de Marketing",
+    subtitle: "Gerencie múltiplos clientes",
+    description: "Gerencie múltiplos clientes com automação personalizada para cada um.",
+    benefits: [
+      "Gestão multi-cliente",
+      "Automação personalizada",
+      "Relatórios detalhados"
+    ]
+  },
+  {
+    icon: User,
+    title: "Autônomos",
+    subtitle: "Profissionalize seu atendimento",
+    description: "Profissionalize seu atendimento e tenha mais tempo para focar no core business.",
+    benefits: [
+      "Atendimento profissional",
+      "Mais tempo livre",
+      "Foco no negócio principal"
+    ]
   }
 ];
 
 const TargetAudienceSection = () => {
   return (
-    <section className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section className="py-20 bg-background">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Feito especialmente para você
+            Para quem é o Agentify?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Soluções personalizadas que se adaptam ao seu estilo de vida e necessidades específicas
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Nossa solução é perfeita para profissionais que querem escalar seus negócios
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {audiences.map((audience, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1"
+              className="bg-white rounded-2xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4">
-                  <audience.icon className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  {audience.title}
-                </h3>
-                <p className="text-primary font-medium">
-                  {audience.subtitle}
-                </p>
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                <audience.icon className="w-6 h-6 text-primary" />
               </div>
-
-              <p className="text-muted-foreground mb-6 text-center">
+              
+              <h3 className="text-lg font-semibold text-foreground mb-1">
+                {audience.title}
+              </h3>
+              
+              <p className="text-sm text-primary font-medium mb-3">
+                {audience.subtitle}
+              </p>
+              
+              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                 {audience.description}
               </p>
-
-              <div className="space-y-3">
+              
+              <ul className="space-y-2">
                 {audience.benefits.map((benefit, benefitIndex) => (
-                  <div key={benefitIndex} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-                    <span className="text-sm text-muted-foreground">{benefit}</span>
-                  </div>
+                  <li key={benefitIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
+                    {benefit}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>

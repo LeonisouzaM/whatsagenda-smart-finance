@@ -1,63 +1,64 @@
-import { Upload, Brain, Smartphone } from "lucide-react";
+import { Smartphone, Settings, Zap, BarChart3 } from "lucide-react";
 
 const steps = [
   {
-    icon: Upload,
-    title: "Envie fotos ou PDFs de extratos e seus objetivos/metas",
-    description: "Simplesmente fotografe seus extratos bancários ou envie PDFs. Compartilhe também suas metas e objetivos pessoais."
-  },
-  {
-    icon: Brain,
-    title: "Receba sua agenda semanal + resumo financeiro via WhatsApp",
-    description: "Nossa IA processa todas as informações e cria uma agenda otimizada junto com um resumo completo dos seus gastos."
-  },
-  {
     icon: Smartphone,
-    title: "Receba alertas e sugestões personalizadas conforme seu comportamento",
-    description: "Com base no seu padrão de uso, receba notificações inteligentes e dicas para melhorar sua rotina e finanças."
-  }
+    title: "Conecte o WhatsApp",
+    description: "Integre seu WhatsApp Business em segundos com nossa API segura.",
+  },
+  {
+    icon: Settings,
+    title: "Configure a IA",
+    description: "Personalize respostas automáticas e fluxos de conversação inteligentes.",
+  },
+  {
+    icon: Zap,
+    title: "Automatize Tudo",
+    description: "Deixe a IA cuidar dos atendimentos, agendamentos e follow-ups.",
+  },
+  {
+    icon: BarChart3,
+    title: "Veja os Resultados",
+    description: "Acompanhe métricas, leads gerados e produtividade em tempo real.",
+  },
 ];
 
 const HowItWorksSection = () => {
   return (
-    <section className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section className="py-20 bg-background">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Como funciona?
+            Como Funciona?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Em apenas 3 etapas simples, você tem controle total sobre sua rotina e finanças
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Em poucos passos, transforme seu WhatsApp em uma poderosa ferramenta de automação
           </p>
         </div>
 
-        <div className="space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
-            <div key={index} className="relative">
-              {/* Step number and connector */}
-              <div className="flex items-center mb-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
+            <div
+              key={index}
+              className="text-center group"
+            >
+              <div className="relative mb-6">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <step.icon className="w-8 h-8 text-primary" />
+                </div>
+                {/* Step Number */}
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                   {index + 1}
                 </div>
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block flex-1 h-px bg-border ml-6"></div>
-                )}
               </div>
-
-              {/* Content */}
-              <div className="bg-white p-6 rounded-xl shadow-soft">
-                <div className="mb-4">
-                  <div className="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center mb-4">
-                    <step.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
+              
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+                {step.title}
+              </h3>
+              
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {step.description}
+              </p>
             </div>
           ))}
         </div>
