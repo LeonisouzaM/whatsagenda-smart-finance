@@ -1,43 +1,57 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Settings, Users, TrendingUp, MessageCircle, Brain, Smartphone } from "lucide-react";
+import { Settings, Users, TrendingUp, MessageCircle, Brain, Smartphone, FileText, Star, CreditCard, PenTool } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function AdminDashboard() {
   const adminCards = [
     {
-      title: "Configurações do Sistema",
-      description: "Gerenciar APIs e configurações globais",
-      icon: Settings,
-      href: "/admin/settings",
+      title: "Editor de Planos",
+      description: "Gerenciar planos e preços da landing",
+      icon: CreditCard,
+      href: "/admin/plans",
       color: "text-blue-600"
     },
     {
-      title: "Usuários Ativos",
-      description: "Gerenciar contas e permissões",
-      icon: Users,
-      href: "/admin/users",
+      title: "Construtor de Blog",
+      description: "Criar e gerenciar posts do blog",
+      icon: PenTool,
+      href: "/admin/blog",
       color: "text-green-600"
     },
     {
       title: "Analytics & Pixels",
       description: "Configurar rastreamento e métricas",
       icon: TrendingUp,
-      href: "/admin/analytics",
+      href: "/admin/pixels",
       color: "text-purple-600"
     },
     {
-      title: "WhatsApp Integration",
-      description: "Status e configurações da API",
-      icon: Smartphone,
-      href: "/admin/whatsapp",
-      color: "text-green-500"
+      title: "Políticas & Termos",
+      description: "Gerenciar documentos legais",
+      icon: FileText,
+      href: "/admin/policies",
+      color: "text-orange-600"
     },
     {
-      title: "IA Gemini",
-      description: "Configurações e monitoramento da IA",
-      icon: Brain,
-      href: "/admin/ai",
-      color: "text-orange-600"
+      title: "Depoimentos",
+      description: "Gerenciar avaliações de clientes",
+      icon: Star,
+      href: "/admin/testimonials",
+      color: "text-yellow-600"
+    },
+    {
+      title: "Configurações do Sistema",
+      description: "APIs e configurações globais",
+      icon: Settings,
+      href: "/admin/settings",
+      color: "text-gray-600"
+    },
+    {
+      title: "Usuários Ativos",
+      description: "Gerenciar contas e permissões",
+      icon: Users,
+      href: "/admin/users",
+      color: "text-emerald-600"
     },
     {
       title: "Logs do Sistema",

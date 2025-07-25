@@ -17,6 +17,11 @@ import { Profile } from "@/pages/Profile";
 import { Subscription } from "@/pages/Subscription";
 import { Support } from "@/pages/Support";
 import { AdminDashboard } from "@/pages/admin/AdminDashboard";
+import { AdminPlansEditor } from "@/pages/admin/AdminPlansEditor";
+import { AdminBlogEditor } from "@/pages/admin/AdminBlogEditor";
+import { AdminPixels } from "@/pages/admin/AdminPixels";
+import { AdminPolicies } from "@/pages/admin/AdminPolicies";
+import { AdminTestimonials } from "@/pages/admin/AdminTestimonials";
 import { AdminSettings } from "@/pages/admin/AdminSettings";
 import { AdminUsers } from "@/pages/admin/AdminUsers";
 import { AdminLogs } from "@/pages/admin/AdminLogs";
@@ -51,6 +56,11 @@ const App = () => (
             
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminRoute><DashboardLayout><AdminDashboard /></DashboardLayout></AdminRoute>} />
+            <Route path="/admin/plans" element={<AdminRoute><DashboardLayout><AdminPlansEditor /></DashboardLayout></AdminRoute>} />
+            <Route path="/admin/blog" element={<AdminRoute><DashboardLayout><AdminBlogEditor /></DashboardLayout></AdminRoute>} />
+            <Route path="/admin/pixels" element={<AdminRoute><DashboardLayout><AdminPixels /></DashboardLayout></AdminRoute>} />
+            <Route path="/admin/policies" element={<AdminRoute><DashboardLayout><AdminPolicies /></DashboardLayout></AdminRoute>} />
+            <Route path="/admin/testimonials" element={<AdminRoute><DashboardLayout><AdminTestimonials /></DashboardLayout></AdminRoute>} />
             <Route path="/admin/settings" element={<AdminRoute><DashboardLayout><AdminSettings /></DashboardLayout></AdminRoute>} />
             <Route path="/admin/users" element={<AdminRoute><DashboardLayout><AdminUsers /></DashboardLayout></AdminRoute>} />
             <Route path="/admin/logs" element={<AdminRoute><DashboardLayout><AdminLogs /></DashboardLayout></AdminRoute>} />
